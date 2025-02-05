@@ -1,0 +1,188 @@
+/* POLICE */
+html {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+body {
+    margin: 0%;
+}
+
+/* BODY */
+main {
+    background-image: url('../ressources/back.png');
+    padding: 3%;
+}
+
+header {
+    padding: 2%;
+    background-color: rgb(43, 4, 13);
+    color: whitesmoke;
+}
+
+header>h1 {
+    padding-left: 3%;
+}
+
+#bodyFont {
+    background-color: rgba(245, 245, 245, 0.800);
+    width: 80%;
+    margin: auto;
+    padding: 1%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+/* FOOTER */
+footer {
+    padding: 2%;
+    background-color: rgb(43, 4, 13);
+    color: whitesmoke;
+    text-align: center;
+}
+
+/* CALENDRIER */
+#arrowBox {
+    margin: auto auto 2% auto;
+    width: 60%;
+
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#arrowBox>a {
+    fill: rgb(43, 4, 13);
+    width: 5%;
+}
+
+#calendar {
+    flex: 4;
+    padding: 1%;
+}
+
+h2 {
+    color: rgb(43, 4, 13);
+    text-align: center;
+}
+
+td {
+    border: solid 1px black;
+}
+
+#tableDays>td {
+    width: 10%;
+    border: solid 1px black;
+    text-align: center;
+    font-weight: bold;
+}
+
+.date {
+    height: 10vh;
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+}
+
+.dDay {
+    background-color: rgba(0, 128, 0, 0.350);
+    color: rgb(255, 3, 3);
+}
+
+.event {
+    background-color: rgba(255, 153, 0, 0.35);
+}
+
+.eventB {
+    text-decoration: none;
+    border: solid 1px black;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    color: green;
+}
+
+.weekEnd {
+    background-color: rgba(128, 128, 128, 0.450);
+}
+
+table {
+    margin: auto;
+    border-collapse: collapse;
+}
+
+/* FILTRE DES DATES */
+form {
+    flex: 1;
+    padding: 1%;
+    border: solid 1px rgba(0, 0, 0, 0.400);
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+form>label,
+input {
+    margin-top: 3%;
+}
+
+input {
+    padding: 3%;
+    width: 60%;
+    background-color: rgb(82, 82, 168);
+    color: whitesmoke;
+    border-radius: 5px;
+    border: none;
+}
+
+/* DIALOG */
+#dialogClose {
+    float: right;
+    border: solid 1px rgba(128, 128, 128, 0.600);
+    border-radius: 7px;
+    box-shadow: 5px 5px 3px black;
+    padding: 1% 3% 1% 3%;
+    background-color: rgb(255, 44, 44);
+    color: whitesmoke;
+}
+
+/* MEDIAS QUERIES */
+/* Tablettes & mobile */
+@media (max-width: 1023px) {
+    #bodyFont {
+        padding: 3%;
+        width: 95%;
+        flex-direction: column;
+    }
+
+    #arrowBox {
+        width: 90%;
+    }
+
+    h2 {
+        font-size: medium;
+    }
+
+    form {
+        width: 80%;
+    }
+
+    #calendar {
+        width: 100%;
+    }
+
+    #tableDays>td {
+        font-size: x-small;
+    }
+
+    .date {
+        height: 5vh;
+        font-size: small;
+        font-weight: bold;
+        text-align: center;
+    }
+}
