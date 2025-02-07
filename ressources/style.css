@@ -34,6 +34,10 @@ header>h1 {
     align-items: baseline;
 }
 
+.error_msg {
+    padding: 1%;
+}
+
 /* FOOTER */
 footer {
     padding: 2%;

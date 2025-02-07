@@ -1,6 +1,19 @@
 <?php
+//- On appel toutes les pages à qui le controller va donenr les instructions
 require_once './model/data.php';
+require_once './view/template.php';
+require_once './view/calendar.php';
 
+//- Appel des fonctions stockées dans les fichiers view
+drawHeader();//On affiche le header (Dans Template)
+drawCalendarFilter();//On affiche le filtre du Calendrier
+if(isFilterSet()!= true){ //Si il n'y a pas de filtre sélectionné cela va afficher le message suivant, sinon la fonction chargera le calendrier
+    errorMsg("Veuillez sélectionner une date comprise entre les 5 dernières ou les 5 prochaines années.");
+}
+drawDialog();//Affichage du modal pour les détails
+drawFooter();//Affichage du footer
+
+//- Fonction pour vérifier si une date correspond à un event
 function isEvent($date){
     if (isset($jsonData)) {
         foreach($jsonData['evenements'] as $event){
@@ -9,6 +22,7 @@ function isEvent($date){
     }
 }
 
+//- Fonction pour vérifier si l'utilisateur à sélectionner un mois et une année (maintenant ou dans le passé grâce aux cookies)
 function isFilterSet() {
     if(isset($_GET['month']) && isset($_GET['year'])){
         $month = $_GET['month'];
@@ -30,6 +44,7 @@ function isFilterSet() {
     }
 }
 
+//- Fonction pour calculer le moi précédent d'une date 'd'
 function previousMonth($year, $month){
     if($month - 1 == 0){
         $pMonth = 12;
@@ -43,6 +58,7 @@ function previousMonth($year, $month){
     return array($pYear, $pMonth);
 }
 
+//- Fonction pour calculer le moi suivant d'une date 'd'
 function nextMonth($year,$month){
     if($month + 1 == 13){
         $nMonth = 1;
@@ -56,6 +72,7 @@ function nextMonth($year,$month){
     return array($nYear, $nMonth);
 }
 
+//- Fonction qui détermine le nombre de cases vide qu'il faudra mettre au début du calendrier. Si le premier jour du mois est un mardi, il y aura 1 case vide
 function emptyCase($sDay){
     switch ($sDay){
         case 'Monday': 
@@ -73,5 +90,12 @@ function emptyCase($sDay){
         case 'Sunday': 
             return $vDay = 7;
     }
+}
+
+//- Fonction qui retourne le nom d'une date 'd' en Français
+function ymFrench($year, $month){
+    $formatFrench = new IntlDateFormatter('fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::NONE);
+    $formatFrench->setPattern('MMMM yyyy');
+    return $formatFrench->format(new DateTime($year . '-' . $month));
 }
 ?>
