@@ -3,13 +3,6 @@
 require_once './controller/calendarController.php';//Le controlleur
 require_once 'template.php';//Pour la fonction ErrorMsg
 
-//- Affichage du filtre et ouverte balise <main>
-function drawCalendarFilter(){
-    echo <<< 'HTML'
-
-        HTML;
-}
-
 //- Affichage du calendrier
 function drawCalendar($year, $month){
     if($year >= ($year - 5) && $year <= ($year + 5)){
