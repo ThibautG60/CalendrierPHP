@@ -1,25 +1,14 @@
 <?php
 //- On appel toutes les pages à qui le controller va donenr les instructions
+require_once 'init_template.php';
 require_once './model/data.php';
 require_once './view/template.php';
 require_once './view/calendar.php';
 
 //- Appel des fonctions stockées dans les fichiers view
-drawHeader();//On affiche le header (Dans Template)
-drawCalendarFilter();//On affiche le filtre du Calendrier
+include_once './view/calendar_filter.php';//On affiche le filtre du Calendrier
 if(isFilterSet()!= true){ //Si il n'y a pas de filtre sélectionné cela va afficher le message suivant, sinon la fonction chargera le calendrier
     errorMsg("Veuillez sélectionner une date comprise entre les 5 dernières ou les 5 prochaines années.");
-}
-drawDialog();//Affichage du modal pour les détails
-drawFooter();//Affichage du footer
-
-//- Fonction pour vérifier si une date correspond à un event
-function isEvent($date){
-    if (isset($jsonData)) {
-        foreach($jsonData['evenements'] as $event){
-            if($date == $event['date'])return true;
-        }
-    }
 }
 
 //- Fonction pour vérifier si l'utilisateur à sélectionner un mois et une année (maintenant ou dans le passé grâce aux cookies)
